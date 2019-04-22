@@ -18,15 +18,24 @@
         </div>
         <div class="form-group">
           <label for="options">3. What do you like best about working here? </label>
-          <div *ngFor="let option of options; let i = index">
-            <label >
-              <input type="checkbox" formControlName = 'bestWorking' />{{option.name}}
-          </label>
+          <div formArrayName="bestWorking" *ngFor="let option of this.surveyForm.controls.bestWorking.controls; let i = index">
+            <div [formGroupName]="i">
+                <label >
+                    <input type="checkbox" formControlName = {{getKey(this.surveyForm.controls.bestWorking.controls[i])}} />{{getKey(this.surveyForm.controls.bestWorking.controls[i])}}
+                </label>
+            </div>
+           
 
           </div>
           
        <input type="text" name="q3" id="q3"  formControlName = 'additionalInfo' class="form-control" placeholder="Other">
         </div>
+
+        <!-- <div formArrayName="bestWorking" *ngFor="let option of options; let i = index;">
+          <div [formGroupName]="i">
+            <input formControlName="option.value" type="checkbox" placeholder="Item name">
+          </div>
+        </div> -->
         <div class="form-group">
           <label>4. How happy are you at work?</label>
           <textarea class="form-control" formControlName = 'happyAtWork' id="q8" rows="5" name="q8" ></textarea>

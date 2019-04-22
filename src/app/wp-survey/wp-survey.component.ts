@@ -30,7 +30,7 @@ export class WpSurveyComponent implements OnInit {
     this.surveyForm = this.fb.group({
       yearsWorked:[''],
       referSomeone:[''],
-      bestWorking:[''],
+      bestWorking: this.createItem(),
       additionalInfo:[''],
       happyAtWork:['']
 
@@ -40,5 +40,23 @@ export class WpSurveyComponent implements OnInit {
     this.surveyForm.controls.bestWorking.valueChanges.subscribe((val) =>{
   });
   }
+  getKey(formCon){
+    return Object.keys(formCon.controls)[0];
+  }
+  createItem() {
+  
+    let formArr = this.fb.array([]);
+    for(let option of this.options){
+      let controlVals = option.value 
+      const valFormGroup = new FormGroup({});
+      const control: FormControl = new FormControl();
+      valFormGroup.addControl(controlVals, control);
+      formArr.push(valFormGroup);
+    }
+    return formArr;
+  }
 
+  createFormControl(){
+    
+  }
 }
