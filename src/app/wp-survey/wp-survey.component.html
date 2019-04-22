@@ -1,0 +1,41 @@
+
+<div class="container bg-1">
+  <div class="row">
+    <h3>Share Your Views On Our Company.</h3>
+  </div>
+  <div class="row">
+      <form [formGroup]="surveyForm">
+    <div class="form-group">
+      <label for="q1">1. How many years have you worked here? </label>
+      <input formControlName= "yearsWorked" name="q1" type="text"  class="form-control">
+    </div>
+    <div class="form-group">
+        <label>2. Would you refer someone to work here?</label>
+  <br/>
+          <label><input formControlName= "referSomeone" type="radio" value="yes" name="referSomeone" > Yes</label>
+      <br/>
+            <label><input type="radio" formControlName= "referSomeone" value="no" name="referSomeone"> No</label>
+        </div>
+        <div class="form-group">
+          <label for="options">3. What do you like best about working here? </label>
+          <div *ngFor="let option of options; let i = index">
+            <label >
+              <input type="checkbox" formControlName = 'bestWorking' />{{option.name}}
+          </label>
+
+          </div>
+          
+       <input type="text" name="q3" id="q3"  formControlName = 'additionalInfo' class="form-control" placeholder="Other">
+        </div>
+        <div class="form-group">
+          <label>4. How happy are you at work?</label>
+          <textarea class="form-control" formControlName = 'happyAtWork' id="q8" rows="5" name="q8" ></textarea>
+	</div>
+      
+
+      <div class="text-center">
+        <button type="submit" class="btn-lg btn-primary" (click)="submit($event)">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

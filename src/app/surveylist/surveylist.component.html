@@ -1,0 +1,11 @@
+<header>
+  <div class="title">
+    <h1>List Of Different Types Of Surveys</h1>
+  </div>
+</header>
+<nav>
+  <ul *ngFor = "let surveys of surveyList">
+    <li><a routerLink="/wpSurvey">{{surveys.Title}}</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
