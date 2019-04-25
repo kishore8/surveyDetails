@@ -5,7 +5,10 @@
 </header>
 <nav>
   <ul *ngFor = "let surveys of surveyList">
-    <li><a routerLink="/wpSurvey">{{surveys.Title}}</a></li>
+    <li><a routerLink="/wpSurvey/add">{{surveys.Title}}</a>
+      <button routerLink="/wpSurvey/add">add</button>
+      <button routerLink="/wpSurvey/edit">Edit</button>
+    </li>
   </ul>
 </nav>
 <router-outlet></router-outlet>

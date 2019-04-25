@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { Router  , ActivatedRoute } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-wp-survey',
@@ -21,9 +24,9 @@ export class WpSurveyComponent implements OnInit {
   }
 
   submit(eve,tempForm){
-    
+    console.log(tempForm);
   }
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private route: ActivatedRoute,private http:HttpClient) { }
 
   ngOnInit() {
    
@@ -36,9 +39,13 @@ export class WpSurveyComponent implements OnInit {
 
 
     })
+    console.log(this.route.snapshot.params['id']);
+    if(this.route.snapshot.params['id'] == 'edit'){
 
-    this.surveyForm.controls.bestWorking.valueChanges.subscribe((val) =>{
-  });
+      this.http.get('./assets/surveyDetails.json').subscribe(data => {
+        this.surveyForm.setValue(data);
+       });
+    }
   }
   getKey(formCon){
     return Object.keys(formCon.controls)[0];

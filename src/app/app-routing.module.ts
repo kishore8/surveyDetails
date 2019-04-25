@@ -4,7 +4,7 @@ import { SurveylistComponent } from './surveylist/surveylist.component';
 import { WpSurveyComponent } from './wp-survey/wp-survey.component';
 
 const routes: Routes = [ { path: '', component: SurveylistComponent },
-{ path: 'wpSurvey', component: WpSurveyComponent }
+{ path: 'wpSurvey/:id', component: WpSurveyComponent }
 
   ];
 
